@@ -1,0 +1,82 @@
+{% extends "inicio/encabezado.html" %}
+
+{% block titulo%} FORMULARIO {%endblock%}
+
+{% block contenido %}
+<style>
+  img{
+    width: 200px;
+  }
+</style>
+<div class="card container p-5">
+    <form class="form-horizontal" action="{% url 'Registrar'%}" method="POST" role="form" enctype="multipart/form-data">
+      {%csrf_token%}
+      <div class="panel panel-default border border-dark shadow p-5 mx-auto col-lg-6">
+        <h1 class="mb-3 text-center">Formulario para los cursos</h1>
+        <div class="panel-body">
+          <div class="form-group mt-3">
+            <div class="col-sm-12">
+              <input id="file" name="imagen" type="file" class="form-control" />
+              <div class="col-lg-4">
+                <div class="mt-3 img-fluid" id="preview"></div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <div class="col-sm-12">
+              <input name="titulo" placeholder="Introduce el titulo" type="text" class="form-control" />
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <div class="col-sm-12">
+              <input name="categoria" placeholder="Introduce la categoria" type="text" class="form-control" />
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <div class="col-sm-12">
+              <input name="autor" placeholder="Introduce el autor" type="text" class="form-control" />
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <div class="col-sm-12">
+              <input name="experiencia" placeholder="Introduce la experiencia" type="text" class="form-control" />
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <div class="col-sm-12">
+              <input name="correo" placeholder="Introduce el correo" type="text" class="form-control" />
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <div class="col-sm-12">
+              <input name="duracion" placeholder="Introduce la duracion" type="text" class="form-control" />
+            </div>
+          </div>
+          <div class="form-actions mt-3 d-grid">
+            <input type="submit" value="Enviar" class="btn btn-primary" />
+          </div>
+        </div>
+      </div>
+    </form>
+    </div>
+    <script>
+      document.getElementById("file").onchange = function(e) {
+        // Creamos el objeto de la clase FileReader
+        let reader = new FileReader();
+      
+        // Leemos el archivo subido y se lo pasamos a nuestro fileReader
+        reader.readAsDataURL(e.target.files[0]);
+      
+        // Le decimos que cuando este listo ejecute el código interno
+        reader.onload = function(){
+          let preview = document.getElementById('preview'),
+                  image = document.createElement('img');
+      
+          image.src = reader.result;
+      
+          preview.innerHTML = '';
+          preview.append(image);
+        };
+      }
+    </script>
+{% endblock %}

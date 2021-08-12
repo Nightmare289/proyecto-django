@@ -1,0 +1,42 @@
+{% extends "inicio/encabezado.html" %} 
+
+{% block titulo %} Contacto {%endblock%}
+
+{% block contenido%}
+<div class="card p-5 container">
+<div class="page-header">
+  <div class="page-title">
+    <h3>COMENTARIOS <small>Lista de Comentarios</small></h3>
+  </div>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Categoria</th>
+      <th>Autor</th>
+      <th>Experiencia</th>
+      <th>Correo</th>
+      <th>Duracion</th>
+    </tr>
+  </thead>
+  CONSULTANDO CURSOS
+  <tbody>
+    {% for curso in cursos %}
+    <tr>
+      <td class="text-semibold"><img src="{{curso.imagen.url}}" alt="" class="img-media"></td>
+      <td class="text-semibold">{{curso.titulo}}</td>
+      <td class="muted">{{curso.categoria}}</td>
+      <td class="text-semibold">{{curso.autor}}</td>
+      <td class="muted">{{curso.experiencia}}</td>
+      <td class="text-semibold">{{curso.correo}}</td>
+      <td class="muted">{{curso.duracion}}</td>
+      <td class="text-center">Editar</td>
+      <td class="text-center">Eliminar</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{%endblock%}

@@ -1,0 +1,24 @@
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+);
+
+.form-control-feedback {
+  position: absolute;
+  padding: 10px;
+  cursor: pointer; 
+}
+
+.form-control {
+  padding-left: 30px!important;
+}
+
+.contenedor{
+  width: 800px;
+}

@@ -1,0 +1,64 @@
+{% extends "inicio/encabezado.html" %}
+
+{% block titulo%} EDITAR {%endblock%}
+
+{% block contenido %}
+<div class="card container p-5">
+    <form class="form-horizontal" action="{% url 'Editar' curso.id %}" method="POST" role="form" enctype="multipart/form-data">
+      {%csrf_token%}
+      <div class="panel panel-default border border-dark shadow p-5 mx-auto col-lg-6">
+        <h1 class="mb-3 text-center">Formulario para editar los cursos</h1>
+        <div class="panel-body">
+          <div class="form-group mt-2">
+            <div class="col-sm-12">
+            <div class="mb-3">
+              <label class="col-sm-4 control-label">Imagen:</label>
+              <img src="{{curso.imagen.url}}" class="card-img-top img-fluid" alt="curso-1" />  
+            </div>
+              <input value={{ curso.imagen.url }} name="imagen" type="file" class="form-control" />
+            </div>
+          </div>
+          <div class="form-group mt-2">
+            <label class="col-sm-4 control-label">Titulo:</label>
+            <div class="col-sm-12">
+              <textarea name="titulo" type="text" class="form-control" cols="50">{{ curso.titulo }}</textarea>
+            </div>
+          </div>
+          <div class="form-group mt-2">
+            <label class="col-sm-4 control-label">Categoria:</label>
+            <div class="col-sm-12">
+              <textarea name="categoria" type="text" class="form-control" cols="50">{{ curso.categoria }}</textarea>
+            </div>
+          </div>
+          <div class="form-group mt-2">
+            <label class="col-sm-4 control-label">Autor:</label>
+            <div class="col-sm-12">
+              <textarea name="autor" type="text" class="form-control" >{{ curso.autor }}</textarea>
+            </div>
+          </div>
+          <div class="form-group mt-2">
+            <label class="col-sm-4 control-label">Experiencia:</label>
+            <div class="col-sm-12">
+              <input value={{ curso.experiencia }} name="experiencia" type="text" class="form-control" />
+            </div>
+          </div>
+          <div class="form-group mt-2">
+            <label class="col-sm-4 control-label">Correo:</label>
+            <div class="col-sm-12">
+              <input value={{ curso.correo }} name="correo" type="text" class="form-control" />
+            </div>
+          </div>
+          <div class="form-group mt-2">
+            <label class="col-sm-4 control-label">Duración:</label>
+            <div class="col-sm-12">
+              <input value={{ curso.duracion }} name="duracion" type="text" class="form-control" />
+            </div>
+          </div>
+          <div class="form-actions mt-3 d-grid">
+            <input type="submit" value="Enviar" class="btn btn-primary" />
+          </div>
+        </div>
+      </div>
+    </form>
+    </div>
+{% endblock %}
